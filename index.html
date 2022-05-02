@@ -8,6 +8,33 @@
     <title>Simulador de Plazo Fijo</title>
 </head>
 <body>
-    <div> <p>Hola Mundo!</p></div>
+    <h1>Simulador de Plazo Fijo</h1>
+
+    <div>
+        <div class="inputs">
+            <label class="label" for="">Nombre:</label><input id="inputNombre" class="input" type="text">
+        </div>
+        <br />
+        <div class="inputs">
+            <label class="label" for="">Apellido:</label><input id="inputApellido" class="input" type="text">
+        </div>
+        <br />
+        <div class="inputs">
+            <label class="label" for="">Monto a invertir:</label><input id="inputMonto" class="input" type="number">
+        </div>
+        <br />
+        <div class="inputs">
+            <label class="label" for="">Cantidad de dias:</label><input id="inputCantDias" class="input" type="number">
+        </div>
+        <br />
+        <select name="" id="reinversion">
+            <option value="" disabled selected hidden>Desea reinvertir?</option>
+            <option value="si">Si</option>
+            <option value="no">No</option>
+        </select>
+    </div>
+    <br />
+    <button id="btnCalcular">Calcular</button>
+
 </body>
 </html>
