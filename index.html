@@ -56,31 +56,69 @@
                     </div>
                     <div class="u-form-group u-form-message">
                         <label for="message-4c18" class="u-label">Monto a invertir:</label>
-                        <input id="inputMonto" min="1000" required class="spin input u-border-2 u-border-palette-1-light-2 u-input u-input-rectangle u-palette-1-light-3 u-radius-10" type="number">
+                        <input id="inputMonto" min="1000" maxlength="30" required class="spin input u-border-2 u-border-palette-1-light-2 u-input u-input-rectangle u-palette-1-light-3 u-radius-10" type="number">
+                        <label id="labelMonto" for="message-4c18" class="u-label" style="display: none;">Debe ser mayor 1000</label>
                     </div>
                     <div class="u-form-group u-form-message">
                         <label for="message-4c18" class="u-label">Cantidad de dias:</label>
-                        <input id="inputDias" min="30" required id="numero" class="input u-border-2 u-border-palette-1-light-2 u-input u-input-rectangle u-palette-1-light-3 u-radius-10" type="number">
+                        <input id="inputDias" min="30" maxlength="30" required class="input u-border-2 u-border-palette-1-light-2 u-input u-input-rectangle u-palette-1-light-3 u-radius-10" type="number">
+                        <label id="labelDias" for="message-4c18" class="u-label" style="display: none;">Debe ser mayor a 30</label>
                     </div>
                     <div class="u-form-group u-form-message">
+                        Desea reinvertir?
                         <select name="" id="reinversion">
-                            <option value="" disabled selected hidden>Desea reinvertir?</option>
                             <option value="si">Si</option>
-                            <option value="no">No</option>
+                            <option value="no" selected>No</option>
                         </select>
                     </div>
                     <div class="u-align-right u-form-group u-form-submit">
-                        <button onclick="valores()" class="u-active-palette-1-light-1 u-border-2 u-border-active-palette-1-light-1 u-border-hover-palette-1-light-1 u-border-palette-1-base u-btn u-btn-round u-btn-submit u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-10 u-btn-1">Calcular</button>
+                        <button type="button" id="btnCalcular" class="u-active-palette-1-light-1 u-border-2 u-border-active-palette-1-light-1 u-border-hover-palette-1-light-1 u-border-palette-1-base u-btn u-btn-round u-btn-submit u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-10 u-btn-1">Calcular</button>
                     </div>
                 </form>
+                <br>
+                <table id='indice-table' class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Dias</th>
+                        <th scope="col">%</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>30 - 60</td>
+                        <td>40% anual</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>61 - 120</td>
+                        <td>45% anual</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>121 - 360</td>
+                        <td>50% anual</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">4</th>
+                        <td>+ 361</td>
+                        <td>55% anual</td>
+                      </tr>
+                    </tbody>
+                </table>
+                <br>
+                <br>
+                <div id="resultado">
+                </div>
+                <br>
+                <br>
+                <div id="resultadoReinversion">
+                </div>                
             </div>
         </div>
     </section>
 
-
-
 </body>
-
-
 
 </html>
