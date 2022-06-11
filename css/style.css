@@ -23,6 +23,23 @@
     --theme-sheet-width-xs: 340px;
 }
 
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
 .u-body {
     color: #111111;
     background-color: #ffffff;
@@ -726,7 +743,7 @@ a:-webkit-any-link {
 }
 
 .u-section-2 .u-form-1 {
-    height: 516px;
+    height: 680px;
     background-image: none;
     margin: -816px 457px 522px 91px;
 }

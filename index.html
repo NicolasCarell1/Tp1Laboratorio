@@ -9,7 +9,10 @@
     <meta name="page_type" content="np-template-header-footer-from-plugin">
     <title>Tabajo practico de laboratorio</title>
     <link rel="stylesheet" href="css/style.css" media="screen">
-    <script class="u-script" type="text/javascript" src="js/index.js" defer=""></script>
+
+    <script src="https://unpkg.com/vue@3"></script>
+
+
 
 
     <meta name="generator">
@@ -17,7 +20,7 @@
     <style class="u-style">
 
     </style>
-
+    <script class="u-script" type="text/javascript" src="js/index.js"></script>
 </head>
 
 <body class="u-body u-xl-mode">
@@ -29,9 +32,9 @@
         </div>
     </header>
 
-    <section class="u-clearfix u-section-2" id="sec-c9ce">
+    <section id="app" class="u-clearfix u-section-2" id="sec-c9ce">
         <div class="title">
-            <h1>Simulador de Plazo Fijo</h1>
+            <h1>{{titulo}}</h1>
         </div>
         <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
             <div class="u-expanded-width-lg u-expanded-width-sm u-shape u-shape-svg u-text-palette-1-light-1 u-shape-1">
@@ -44,40 +47,29 @@
             <div class="u-align-left u-image u-image-circle u-preserve-proportions u-image-1" data-image-width="616" data-image-height="616"></div>
             <div class="u-palette-1-light-2 u-shape u-shape-circle u-shape-2"></div>
             <div class="u-form u-radius-10 u-white u-form-1" style="padding: 20px;">
-                <form class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form">
 
-                    <div class="u-form-group u-form-name">
-                        <label for="name-4c18" class="u-label">Nombre:</label>
-                        <input id="inputNombre" required class="input u-border-2 u-border-palette-1-light-2 u-input u-input-rectangle u-palette-1-light-3 u-radius-10" type="text">
-                    </div>
-                    <div class="u-form-email u-form-group">
-                        <label for="email-4c18" class="u-label">Apellido:</label>
-                        <input id="inputApellido" required class="input u-border-2 u-border-palette-1-light-2 u-input u-input-rectangle u-palette-1-light-3 u-radius-10" type="text">
-                    </div>
-                    <div class="u-form-group u-form-message">
-                        <label for="message-4c18" class="u-label">Monto a invertir:</label>
-                        <input id="inputMonto" min="1000" required class="spin input u-border-2 u-border-palette-1-light-2 u-input u-input-rectangle u-palette-1-light-3 u-radius-10" type="number">
-                    </div>
-                    <div class="u-form-group u-form-message">
-                        <label for="message-4c18" class="u-label">Cantidad de dias:</label>
-                        <input id="inputDias" min="30" required id="numero" class="input u-border-2 u-border-palette-1-light-2 u-input u-input-rectangle u-palette-1-light-3 u-radius-10" type="number">
-                    </div>
-                    <div class="u-form-group u-form-message">
-                        <select name="" id="reinversion">
-                            <option value="" disabled selected hidden>Desea reinvertir?</option>
-                            <option value="si">Si</option>
-                            <option value="no">No</option>
-                        </select>
-                    </div>
-                    <div class="u-align-right u-form-group u-form-submit">
-                        <button onclick="valores()" class="u-active-palette-1-light-1 u-border-2 u-border-active-palette-1-light-1 u-border-hover-palette-1-light-1 u-border-palette-1-base u-btn u-btn-round u-btn-submit u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-10 u-btn-1">Calcular</button>
-                    </div>
-                </form>
+                <index-agregados></index-agregados>
+                <dias></dias>
+                <br>
+                <br>
+                <div id="resultado">
+                </div>
+                <br>
+                <br>
+                <div id="resultadoReinversion">
+                </div>
             </div>
         </div>
     </section>
 
+    <script src="js/indexagregados.js"></script>
 
+
+    <script src="js/index.js"></script>
+
+    <script>
+        const mountedApp = app.mount('#app')
+    </script>
 
 </body>
 
