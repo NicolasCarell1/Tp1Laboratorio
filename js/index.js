@@ -22,8 +22,8 @@ app.component('index-agregados', {
     <div class="u-form-group u-form-message">
         <select  id="reinversion" v-model="reinversion">
             <option value="" disabled selected hidden>Desea reinvertir?</option>
-            <option value="true">Si</option>
-            <option value="false">No</option>
+            <option value="si">Si</option>
+            <option value="no">No</option>
         </select>
     </div>
     <div class="u-align-right u-form-group u-form-submit">
@@ -45,7 +45,7 @@ app.component('index-agregados', {
             apellido: '',
             monto: null,
             dias: null,
-            reinversion: false,
+            reinversion: '',
             datos: [],
             buttonName: 'Calcular',
             montoFinal: null,
