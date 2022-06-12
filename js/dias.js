@@ -32,5 +32,5 @@ app.component('dias', {
                 <td>55% anual</td>
             </tr>
         </tbody>
-    </table>`
+    </table>`,
 })

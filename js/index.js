@@ -22,15 +22,16 @@ app.component('index-agregados', {
     <div class="u-form-group u-form-message">
         <select  id="reinversion" v-model="reinversion">
             <option value="" disabled selected hidden>Desea reinvertir?</option>
-            <option value="si">Si</option>
-            <option value="no">No</option>
+            <option value="true">Si</option>
+            <option value="false">No</option>
         </select>
     </div>
     <div class="u-align-right u-form-group u-form-submit">
     <button 
     value="Submit"
     type="submit"
-        @click="verificarDatos"
+        @click="calcularMonto()"
+        @click="calcularMontoReinvertido()"
         id="btnCalcular" 
         class="u-active-palette-1-light-1 u-border-2 u-border-active-palette-1-light-1 u-border-hover-palette-1-light-1 u-border-palette-1-base u-btn u-btn-round u-btn-submit u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-10 u-btn-1"
         >{{buttonName}}
@@ -42,38 +43,103 @@ app.component('index-agregados', {
         return {
             nombre: '',
             apellido: '',
-            monto: '',
-            dias: '',
-            reinversion: null,
+            monto: null,
+            dias: null,
+            reinversion: false,
             datos: [],
             buttonName: 'Calcular',
+            montoFinal: null,
+            interes: null,
+            intereses: null,
+            montoFinalreinversion: null,
+            inicialSegPeriodo: 0,
+            finalSegPeriodo: 0,
+            inicialTercerPeriodo: 0,
+            finalTercerPeriodo: 0,
+            inicialCuartoPeriodo: 0,
+            finalCuartoPeriodo: 0,
 
         }
     },
 
     methods: {
-        adddatos(datos) {
-            this.datos.push({ nombre: this.nombre, apellido: this.apellido, monto: this.monto, dias: this.dias })
-        },
         onSubmit() {
+            if (this.name === '' || this.apellido === '' || this.monto < 1000 || this.dias < 30 || this.reinversion === '') {
+                alert('Faltan datos');
+                return
+            }
             let montoinversion = {
                 nombre: this.nombre,
                 apellido: this.apellido,
                 monto: this.monto,
                 dias: this.dias,
+                reinversion: this.reinversion,
+                interes: this.interes,
+                montoFinal: this.montoFinal,
+                montoFinalreinversion: this.montoFinalreinversion,
+                inicialSegPeriodo: this.inicialSegPeriodo,
+                finalSegPeriodo: this.finalSegPeriodo,
+                inicialTercerPeriodo: this.inicialTercerPeriodo,
+                finalTercerPeriodo: this.finalTercerPeriodo,
+                inicialCuartoPeriodo: this.inicialCuartoPeriodo,
+                finalCuartoPeriodo: this.finalCuartoPeriodo,
+                intereses: this.intereses,
 
             }
             this.$emit('subir-datos', montoinversion)
 
             this.nombre = ''
             this.apellido = ''
-            this.monto = ''
-            this.dias = ''
+            this.monto = null
+            this.dias = null
+            this.reinversion = ''
+            this.montoFinal = null
+            this.interes = null
+            this.montoFinalreinversion = null
+            this.inicialSegPeriodo = null
+            this.finalSegPeriodo = null
+            this.inicialTercerPeriodo = null
+            this.finalTercerPeriodo = null
+            this.inicialCuartoPeriodo = null
+            this.finalCuartoPeriodo = null
+            this.intereses = null
+        },
+        calcularMonto(monto, dias) {
+
+            //let interes = NaN;
+
+            if (!(this.dias > 60)) this.interes = 40;
+            else if (!(this.dias > 120)) this.interes = 45;
+            else if (!(this.dias > 360)) this.interes = 50;
+            else this.interes = 55;
+
+            this.montoFinal = (this.monto * ((this.dias / 360) * (this.interes / 100))) + this.monto;
 
         },
-        calcularInversion() {
-            this.$emit('mostrar-calculo')
+
+        calcularMontoReinvertido() {
+            if (this.reinversion === 'si') {
+                //let interes = NaN;
+                //let montoFinal = 0;
+                if (!(this.dias > 60)) this.intereses = 40;
+                else if (!(this.dias > 120)) this.intereses = 45;
+                else if (!(this.dias > 360)) this.intereses = 50;
+                else this.intereses = 55;
+
+                this.montoFinalreinversion = (parseInt(this.monto) * ((this.dias / 360) * (this.intereses / 100))) + parseInt(this.monto);
+
+                this.inicialSegPeriodo = this.montoFinalreinversion;
+                this.finalSegPeriodo = (parseInt(this.montoFinalreinversion) * ((this.dias / 360) * (this.intereses / 100))) + parseInt(this.montoFinalreinversion);
+                this.inicialTercerPeriodo = this.finalSegPeriodo;
+                this.finalTercerPeriodo = (parseInt(this.finalSegPeriodo) * ((this.dias / 360) * (this.intereses / 100))) + parseInt(this.finalSegPeriodo);
+                this.inicialCuartoPeriodo = this.finalTercerPeriodo;
+                this.finalCuartoPeriodo = (parseInt(this.finalTercerPeriodo) * ((this.dias / 360) * (this.intereses / 100))) + parseInt(this.finalTercerPeriodo);
+            }
         },
+
+
+
+
 
 
     }

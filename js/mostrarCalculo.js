@@ -2,13 +2,13 @@ app.component('mostrar-calculo', {
     props: {
         datos: {
             type: Array,
-            required: false
+            required: true
         }
 
     },
     data() {
         return {
-            intereses: 0,
+            interes: 0,
             montoFinal: 0,
             inputDias: 0,
             inputMonto: 0,
@@ -18,16 +18,16 @@ app.component('mostrar-calculo', {
     template:
     /*html*/
         `
-        <div v-for="(dato, index) in datos" :key="index">
+        <div @onchange="calcularMonto" v-for="(dato, index) in datos" :key="index">
         <h4>Sr/a {{dato.nombre}} {{dato.apellido}}</h4>
         <br>
         <label><strong>Capital invertido:</strong> {{dato.monto}}</label>
         <br>
-        <label><strong>Cantidad de dias:</strong> {{dato.cantDias}}</label>
+        <label><strong>Cantidad de dias:</strong> {{dato.dias}}</label>
         <br>
-        <label><strong>Interes:</strong> {{interes}}</label>
+        <label><strong>Interes:</strong> {{dato.interes}}</label>
         <br>
-        <label><strong>Monto Final:</strong> {{montoFinal}}</label>
+        <label><strong>Monto Final:</strong> {{dato.montoFinal.toFixed(2)}}</label>
         </div>`,
 
     methods: {
@@ -48,18 +48,7 @@ app.component('mostrar-calculo', {
                 }
             }
         },
-        calcularMonto(monto, cantDias) {
 
-            //let interes = NaN;
-            //let montoFinal = 0;
-            if (!(cantDias > 60)) this.interes = 40;
-            else if (!(cantDias > 120)) this.interes = 45;
-            else if (!(cantDias > 360)) this.interes = 50;
-            else this.interes = 55;
-
-            this.montoFinal = (parseInt(monto) * ((cantDias / 360) * (this.interes / 100))) + parseInt(monto);
-
-        },
         computed: {
             reinv(reinversion) {
                 return this.reinversion;
