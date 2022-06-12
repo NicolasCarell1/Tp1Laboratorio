@@ -19,7 +19,7 @@ C6.9,115.6,25.2,125.2,43.2,126.9z"></path></svg>
         <index-agregados @subir-datos="mostrarcalculo"></index-agregados>
         <dias></dias>
         <mostrar-calculo v-if="datos.length" :datos="datos"></mostrar-calculo>
-        <mostrar-calculo-Reinvertido v-if="datos.length"  v-if="reinvertir" :datos="datos"></mostrar-calculo-Reinvertido>
+        <mostrar-calculo-Reinvertido v-if="datos.length" :datos="datos"></mostrar-calculo-Reinvertido>
 
     </div>
 

@@ -8,7 +8,7 @@ app.component('mostrar-calculo-Reinvertido', {
     },
     template:
     /*html*/
-        `<table v-if="dato.reinversion = true" class="table">
+        `<table class="table">
         <thead>
         <tr>
             <th scope="col">Periodo</th>
