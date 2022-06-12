@@ -52,13 +52,13 @@
                 <dias></dias>
                 <br>
                 <br>
-                <div id="resultado">
-                </div>
-                <br>
-                <br>
-                <div id="resultadoReinversion">
-                </div>
+                <mostrar-calculo-Reinvertido :nombre="nombre" :apellido="apellido" :monto="monto" :dias="dias"></mostrar-calculo-Reinvertido>
             </div>
+            <br>
+            <br>
+            <mostrar-calculo></mostrar-calculo>
+        </div>
+        </div>
         </div>
     </section>
 
@@ -66,6 +66,9 @@
 
 
     <script src="js/index.js"></script>
+    <script src="js/mostrarCalculo.js"></script>
+    <script src="js/mostrarCalculoReinvertido.js"></script>
+    <script src="js/dias.js"></script>
 
     <script>
         const mountedApp = app.mount('#app')
