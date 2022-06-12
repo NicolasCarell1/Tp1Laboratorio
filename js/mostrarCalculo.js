@@ -1,20 +1,8 @@
 app.component('mostrar-calculo', {
     props: {
-        nombre: {
-            required: true,
-        },
-        apellido: {
-            required: true,
-        },
-        monto: {
-            //type: Float,
-            required: true
-        },
-        cantDias: {
-            required: true,
-        },
-        reinversion: {
-            required: false,
+        datos: {
+            type: Array,
+            required: false
         }
 
     },
@@ -29,15 +17,18 @@ app.component('mostrar-calculo', {
     },
     template:
     /*html*/
-        `<h4>Sr/a {{nombre}} {{apellido}}</h4>
+        `
+        <div v-for="(dato, index) in datos" :key="index">
+        <h4>Sr/a {{dato.nombre}} {{dato.apellido}}</h4>
         <br>
-        <label><strong>Capital invertido:</strong> {{monto}}</label>
+        <label><strong>Capital invertido:</strong> {{dato.monto}}</label>
         <br>
-        <label><strong>Cantidad de dias:</strong> {{cantDias}}</label>
+        <label><strong>Cantidad de dias:</strong> {{dato.cantDias}}</label>
         <br>
         <label><strong>Interes:</strong> {{interes}}</label>
         <br>
-        <label><strong>Monto Final:</strong> {{montoFinal}}</label>`,
+        <label><strong>Monto Final:</strong> {{montoFinal}}</label>
+        </div>`,
 
     methods: {
         verificarDatos() {

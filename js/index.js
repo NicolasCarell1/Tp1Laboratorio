@@ -20,16 +20,24 @@ app.component('index-agregados', {
         <input id="dias" min="30" v-model.number="dias"  class="input u-border-2 u-border-palette-1-light-2 u-input u-input-rectangle u-palette-1-light-3 u-radius-10" type="number">
     </div>
     <div class="u-form-group u-form-message">
-        <select  id="reinversion" v-model="inversion">
+        <select  id="reinversion" v-model="reinversion">
             <option value="" disabled selected hidden>Desea reinvertir?</option>
             <option value="si">Si</option>
             <option value="no">No</option>
         </select>
     </div>
     <div class="u-align-right u-form-group u-form-submit">
-        <button @click="verificarDatos" id="btnCalcular" class="u-active-palette-1-light-1 u-border-2 u-border-active-palette-1-light-1 u-border-hover-palette-1-light-1 u-border-palette-1-base u-btn u-btn-round u-btn-submit u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-10 u-btn-1">Calcular</button>
-    </div>
-</form>`,
+    <button 
+    value="Submit"
+    type="submit"
+        @click="verificarDatos"
+        id="btnCalcular" 
+        class="u-active-palette-1-light-1 u-border-2 u-border-active-palette-1-light-1 u-border-hover-palette-1-light-1 u-border-palette-1-base u-btn u-btn-round u-btn-submit u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-10 u-btn-1"
+        >{{buttonName}}
+    </button>
+</div>
+</form>
+`,
     data() {
         return {
             nombre: '',
@@ -37,42 +45,37 @@ app.component('index-agregados', {
             monto: '',
             dias: '',
             reinversion: null,
-            buttonName: 'Calcular'
+            datos: [],
+            buttonName: 'Calcular',
+
         }
     },
-    props: {
-        dias: {
-            type: Number,
-            required: true
-        },
-        monto: {
-            type: Number,
-            required: true
-        },
-        reinversion: {
-            type: Option,
-            required: true
-        },
-        verificarDatos: {
-            type: function() {},
-            required: true
-        }
-    },
+
     methods: {
+        adddatos(datos) {
+            this.datos.push({ nombre: this.nombre, apellido: this.apellido, monto: this.monto, dias: this.dias })
+        },
         onSubmit() {
             let montoinversion = {
                 nombre: this.nombre,
                 apellido: this.apellido,
                 monto: this.monto,
                 dias: this.dias,
+
             }
-            this.$emit('agregar', montoinversion)
+            this.$emit('subir-datos', montoinversion)
 
             this.nombre = ''
             this.apellido = ''
             this.monto = ''
             this.dias = ''
-            this.reinversion = ''
-        }
+
+        },
+        calcularInversion() {
+            this.$emit('mostrar-calculo')
+        },
+
+
     }
+
 })
