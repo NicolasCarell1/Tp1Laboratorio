@@ -48,10 +48,10 @@ app.component('index-agregados', {
             reinversion: '',
             datos: [],
             buttonName: 'Calcular',
-            montoFinal: null,
+            montoFinal: 0,
             interes: null,
             intereses: null,
-            montoFinalreinversion: null,
+            montoFinalreinversion: 0,
             inicialSegPeriodo: 0,
             finalSegPeriodo: 0,
             inicialTercerPeriodo: 0,
@@ -95,15 +95,15 @@ app.component('index-agregados', {
             this.monto = null
             this.dias = null
             this.reinversion = ''
-            this.montoFinal = null
+            this.montoFinal = 0
             this.interes = null
-            this.montoFinalreinversion = null
-            this.inicialSegPeriodo = null
-            this.finalSegPeriodo = null
-            this.inicialTercerPeriodo = null
-            this.finalTercerPeriodo = null
-            this.inicialCuartoPeriodo = null
-            this.finalCuartoPeriodo = null
+            this.montoFinalreinversion = 0
+            this.inicialSegPeriodo = 0
+            this.finalSegPeriodo = 0
+            this.inicialTercerPeriodo = 0
+            this.finalTercerPeriodo = 0
+            this.inicialCuartoPeriodo = 0
+            this.finalCuartoPeriodo = 0
             this.intereses = null
         },
         calcularMonto() {
@@ -121,10 +121,8 @@ app.component('index-agregados', {
 
 
         calcularMontoReinvertido() {
-            alert('***'+this.reinversion)
             if (this.reinversion === 'si') {
                 //let interes = NaN;
-                alert('entro')
                 //let montoFinal = 0;
                 if (!(this.dias > 60)) this.intereses = 40;
                 else if (!(this.dias > 120)) this.intereses = 45;
