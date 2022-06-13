@@ -68,6 +68,8 @@ app.component('index-agregados', {
                 alert('Faltan datos');
                 return
             }
+            //datos=[];
+            //alert('hola '+document.getElementById('reinversion').value+'  '+this.reinversion);
             let montoinversion = {
                 nombre: this.nombre,
                 apellido: this.apellido,
@@ -119,8 +121,10 @@ app.component('index-agregados', {
 
 
         calcularMontoReinvertido() {
+            alert('***'+this.reinversion)
             if (this.reinversion === 'si') {
                 //let interes = NaN;
+                alert('entro')
                 //let montoFinal = 0;
                 if (!(this.dias > 60)) this.intereses = 40;
                 else if (!(this.dias > 120)) this.intereses = 45;
