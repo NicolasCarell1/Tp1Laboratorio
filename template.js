@@ -34,7 +34,10 @@ C6.9,115.6,25.2,125.2,43.2,126.9z"></path></svg>
     },
     methods: {
         mostrarcalculo(datos) {
+
             this.datos.push(datos)
+
+
         }
     }
 })

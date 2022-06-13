@@ -104,7 +104,7 @@ app.component('index-agregados', {
             this.finalCuartoPeriodo = null
             this.intereses = null
         },
-        calcularMonto(monto, dias) {
+        calcularMonto() {
 
             //let interes = NaN;
 
@@ -116,6 +116,7 @@ app.component('index-agregados', {
             this.montoFinal = (this.monto * ((this.dias / 360) * (this.interes / 100))) + this.monto;
 
         },
+
 
         calcularMontoReinvertido() {
             if (this.reinversion === 'si') {

@@ -12,7 +12,7 @@ app.component('mostrar-calculo', {
             montoFinal: 0,
             inputDias: 0,
             inputMonto: 0,
-            reinversion: 'No'
+
         }
     },
     template:
@@ -29,33 +29,6 @@ app.component('mostrar-calculo', {
         <br>
         <label><strong>Monto Final:</strong> {{dato.montoFinal.toFixed(2)}}</label>
         </div>`,
-
-    methods: {
-        verificarDatos() {
-            let correct = true;
-            if (inputDias.value < 30) {
-                correct = false;
-            }
-            if (inputMonto.value < 1000) {
-                correct = false;
-            }
-            if (correct) {
-                if (reinversion.value === 'no') {
-                    calcularMonto(inputMonto.value, inputDias.value)
-                } else {
-                    calcularMonto(inputMonto.value, inputDias.value),
-                        calcularMontoReinvertido(inputMonto.value, inputDias.value)
-                }
-            }
-        },
-
-        computed: {
-            reinv(reinversion) {
-                return this.reinversion;
-            }
-        }
-
-    }
 
 
 })
